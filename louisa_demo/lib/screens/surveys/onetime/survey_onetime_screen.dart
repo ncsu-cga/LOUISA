@@ -16,15 +16,15 @@ class OneTimeHealthScreen extends StatelessWidget {
     // Do anything with the result
     final String dateTimeNow =
         DateFormat.yMEd().add_jms().format(DateTime.now());
-    setSharedPreference(Const.ONETIME_SURVEY, Const.COMPLETE);
-    setSharedPreference(Const.ONETIME_SURVEY_DATE, dateTimeNow);
+    setSharedPreference(Const.ONETIME_HEALTH_SURVEY, Const.COMPLETE);
+    setSharedPreference(Const.ONETIME_HEALTH_SURVEY_DATE, dateTimeNow);
     print(_encode(result));
   }
 
   void cancelCallBack(BuildContext context, RPTaskResult result) {
     // Do anything with the result at the moment of the cancellation
     //print('The result so far:\n' + _encode(result));
-    setSharedPreference(Const.ONETIME_SURVEY, Const.INCOMPLETE);
+    setSharedPreference(Const.ONETIME_HEALTH_SURVEY, Const.INCOMPLETE);
     Navigator.popAndPushNamed(context, PaticipantNavScreen.id);
   }
 

@@ -1,12 +1,16 @@
 class Const {
+  // Auth
+  static const String SESSION = '';
+
+  // Survey
   static const String CALL_911 = '911';
   static const String DOCTOR_NAME = '';
   static const String DOCTOR_PHONE = '';
   static const String CONSENT_FORM = '';
   static const String CONSENT_DATE = '';
   static const String PROFILE = '';
-  static const String ONETIME_SURVEY = '';
-  static const String ONETIME_SURVEY_DATE = '';
+  static const String ONETIME_HEALTH_SURVEY = '';
+  static const String ONETIME_HEALTH_SURVEY_DATE = '';
 
   //static const String DATE_FORMAT = 'MM/DD/yyyy';
   static const String INITIAL_DATE = '1/1/1960';

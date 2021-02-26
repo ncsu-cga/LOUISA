@@ -1,3 +1,4 @@
+import 'package:louisa_demo/screens/surveys/onetime/survey_profile_screen2.dart';
 import 'package:research_package/model.dart';
 
 import 'package:louisa_demo/screens/surveys/onetime/survey_profile_screen.dart';
@@ -129,6 +130,6 @@ RPCompletionStep completionStep = RPCompletionStep('completionID')
 RPOrderedTask consentTask = RPOrderedTask(
   'consentTaskID',
   [consentReviewStep, completionStep],
-  closeAfterFinished: false, navigationPageId: PaticipantInfoScreen.id
+  closeAfterFinished: false, navigationPageId: PaticipantInfoScreen2.id
 );
 //navigationPageId: PaticipantInfoScreen.id

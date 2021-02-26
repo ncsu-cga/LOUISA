@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:io' show Platform;
 import 'package:flutter_map/plugin_api.dart';
-import 'package:intl/intl.dart';
 import 'package:latlong/latlong.dart';
+
 import 'package:louisa_demo/utils/style.dart';
 import 'package:louisa_demo/ui/ui_question_text.dart';
 import 'package:louisa_demo/widgets/ui_rounded_button.dart';
@@ -51,6 +51,7 @@ class _PaticipantInfoScreen2State extends State<PaticipantInfoScreen2> {
     //getCurrentLocation();
   }
 
+  @override
   void dispose() {
     _firstName.dispose();
     _lastName.dispose();
@@ -95,8 +96,8 @@ class _PaticipantInfoScreen2State extends State<PaticipantInfoScreen2> {
                   // contentPadding: EdgeInsets.fromLTRB(0, 30, 0, 10),
                 ),
                 onSaved: (String value) {
-                  // This optional block of code can be used to run
-                  // code when the user saves the form.
+                  // This optional bl6                   ock of code can be used to run
+                  // code when the unser saves the form.
                 },
                 validator: (String value) {
                   return value.isEmpty ? 'First name is required' : null;

@@ -5,6 +5,7 @@ import 'package:louisa_demo/services/http_services.dart';
 import 'package:louisa_demo/utils/utils.dart';
 import 'package:louisa_demo/widgets/ui_appbar_widget.dart';
 import 'package:louisa_demo/utils/constant.dart';
+import 'package:louisa_demo/screens/surveys/consent/survey_consent_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   static const id = 'sign_up_screen';
@@ -40,7 +41,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarWithCloseDefault(context, 'LOUISA'),
+      appBar: AppBar(
+        title: Text('Sign Up'),
+        centerTitle: true,
+      ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 30.0),
         child: Builder(
@@ -63,7 +67,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               Icons.email,
                               color: kPrimaryColor,
                             ),
-
                           ),
                           validator: (val) {
                             if (val.isEmpty) return 'Empty';
@@ -141,16 +144,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         color: kPrimaryColor,
                         onPressed: () async {
                           _validate = _form.currentState.validate();
-                          response = await createUser(
-                              _email.text, _pass.text, context);
-                          setState(() {
-                            if (response
-                                .containsKey(Const.AUTH['USER_CREATED'])) {
-                              print('set session');
-                              print(response[Const.AUTH['USER_CREATED']]);
-                            }
-                          });
-                          //Navigator.popAndPushNamed(context, ConsentScreen.id);
+                          // response = await createUser(
+                          //     _email.text, _pass.text, context);
+                          // setState(() {
+                          //   if (response
+                          //       .containsKey(Const.AUTH['USER_CREATED'])) {
+                          //     print('set session');
+                          //     print(response[Const.AUTH['USER_CREATED']]);
+                          //   }
+                          // });
+                          Navigator.popAndPushNamed(context, ConsentScreen.id);
                         },
                       ),
                     ],

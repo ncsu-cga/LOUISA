@@ -36,6 +36,7 @@ class _LocalNotificationScreenState extends State<LocalNotificationScreen> {
         ),
       ),
     );
+    
   }
 
   onNotificationInLowerVersions(ReceivedNotification receivedNotification) {

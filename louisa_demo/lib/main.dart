@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:louisa_demo/demo_screens/demo_send_picture.dart';
+import 'package:louisa_demo/demo_screens/demo_take_picture.dart';
+import 'package:louisa_demo/screens/help_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -18,6 +21,7 @@ import 'package:louisa_demo/screens/auth/sign_up_screen.dart';
 import 'package:louisa_demo/screens/local_notification_screen.dart';
 import 'package:louisa_demo/demo.dart';
 import 'package:louisa_demo/utils/style.dart';
+import 'package:louisa_demo/screens/about.dart';
 
 void main() {
   runApp(MyApp());
@@ -65,16 +69,20 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
       ),
-      initialRoute: PaticipantNavScreen.id,
+      initialRoute: DemoHome.id,
       routes: {
         DemoHome.id: (context) => DemoHome(),
+        DemoTakePictureScreen.id: (context) => DemoTakePictureScreen(),
+        DemoSendPictureScreen.id: (context) => DemoSendPictureScreen(),
+        AboutScreen.id: (context) => AboutScreen(),
+        HelpScreen.id: (context) => HelpScreen(),
         LocalNotificationScreen.id: (context) => LocalNotificationScreen(),
         //NonPaticipantNavScreen.id: (context) => NonPaticipantNavScreen(),
         PaticipantNavScreen.id: (context) => PaticipantNavScreen(),
         LoginScreen.id: (context) => LoginScreen(),
         SignUpScreen.id: (context) => SignUpScreen(),
         ConsentScreen.id: (context) => ConsentScreen(),
-        PaticipantInfoScreen.id: (context) => PaticipantInfoScreen(),
+        // PaticipantInfoScreen.id: (context) => PaticipantInfoScreen(),
         PaticipantInfoScreen2.id: (context) => PaticipantInfoScreen2(),
         DoctorInfoScreen.id: (context) => DoctorInfoScreen(),
         OneTimeHealthScreen.id: (context) => OneTimeHealthScreen(),

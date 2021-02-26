@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:louisa_demo/screens/surveys/daily/survey_daily_environment_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:louisa_demo/models/utils.dart';
 import 'package:louisa_demo/widgets/ui_home_card_button.dart';
+import 'package:louisa_demo/screens/auth/login_screen.dart';
 
 class PaticipantHomeScreen extends StatefulWidget {
   static const id = 'paticipant_home_screen';
@@ -13,44 +15,37 @@ class PaticipantHomeScreen extends StatefulWidget {
 class _PaticipantHomeScreenState extends State<PaticipantHomeScreen> {
   String token = 'logged_in';
   bool consent = false;
+  SharedPreferences _prefs;
+  String demo;
   // Create UI - card list buttons
-  List<Widget> createCardListButtons(List<CardButtonItems> items) {
-    List<Widget> cardButtonItems = [];
-    for (CardButtonItems item in items) {
-      var newItem = CardButton(title: item.title, onTap: item.onTap);
-      cardButtonItems.add(newItem);
-      cardButtonItems.add(Divider());
-    }
-    return cardButtonItems;
+  // List<Widget> createCardListButtons(List<CardButton> items) {
+  //   List<Widget> cardButtonItems = [];
+  //   for (CardButton item in items) {
+  //     var newItem = CardButton(
+  //         title: item.title, leading: item.leading, onTap: item.onTap);
+  //     cardButtonItems.add(newItem);
+  //     cardButtonItems.add(Divider());
+  //   }
+  //   return cardButtonItems;
+  // }
+
+  @override
+  void initState() {
+    super.initState();
+    sharedPrefs();
+  }
+
+  Future<void> sharedPrefs() async {
+    _prefs = await SharedPreferences.getInstance();
+    setState(() {
+      demo = _prefs.getString('DEMO');
+    });
+    print(demo);
   }
 
   @override
   Widget build(BuildContext context) {
-    List<CardButtonItems> cardButtonItems = [
-      CardButtonItems(
-          title: 'My Health Symptom',
-          onTap: () {
-              //Navigator.pushNamed(context, MyHealthScreen.id);
-          }),
-      CardButtonItems(
-        title: 'My Community Health',
-        onTap: null,
-      ),
-      CardButtonItems(
-        title: 'My Local Air Quality',
-        onTap: () {},
-      ),
-      CardButtonItems(
-        title: 'Report an Environmental Problem',
-        onTap: () {},
-      ),
-      CardButtonItems(
-        title: 'Read Other Air Pollution problem',
-        onTap: () {},
-      ),
-    ];
-
-    return Scaffold(
+        return Scaffold(
       body: Center(
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
@@ -64,9 +59,43 @@ class _PaticipantHomeScreenState extends State<PaticipantHomeScreen> {
                 height: 30.0,
               ),
               Expanded(
-                child: ListView(
-                  children: createCardListButtons(cardButtonItems),
-                ),
+                child: ListView(children: [
+                  CardButton(
+                      title: 'My Health Symptom',
+                      leading: demo != 'DAILY_ENVIRONMENT'
+                          ? Icon(Icons.emoji_people,
+                              size: 46.0, color: Colors.pinkAccent)
+                          : Icon(Icons.emoji_people, size: 36.0),
+                      onTap: () => demo != 'DAILY_ENVIRONMENT'
+                          ? Navigator.pushNamed(context, LoginScreen.id)
+                          : null),
+                  CardButton(
+                    title: 'My Community Health',
+                    leading: Icon(Icons.construction_sharp, size: 30.0),
+                    onTap: null,
+                  ),
+                  CardButton(
+                    title: 'My Local Air Quality',
+                    leading: Icon(Icons.construction_sharp, size: 30.0),
+                    onTap: null,
+                  ),
+                  CardButton(
+                    title: 'Report an Environmental Problem',
+                    leading: demo == 'DAILY_ENVIRONMENT'
+                        ? Icon(Icons.whatshot_outlined,
+                            size: 46.0, color: Colors.deepPurpleAccent)
+                        : Icon(Icons.whatshot_outlined, size: 36.0),
+                    onTap: () => demo == 'DAILY_ENVIRONMENT'
+                        ? Navigator.pushNamed(
+                            context, DailyEnvironmentScreen.id)
+                        : null,
+                  ),
+                  CardButton(
+                    title: 'Read Other Air Pollution problem',
+                    leading: Icon(Icons.construction_sharp, size: 30.0),
+                    onTap: null,
+                  )
+                ]),
               ),
             ],
           ),

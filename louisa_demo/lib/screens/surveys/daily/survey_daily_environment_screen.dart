@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:louisa_demo/demo_screens/demo_take_picture.dart';
 
 import 'package:louisa_demo/screens/surveys/daily/take_picture_screen.dart';
 
@@ -9,6 +10,7 @@ import 'package:louisa_demo/utils/style.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:louisa_demo/models/choice.dart';
 import 'package:louisa_demo/screens/home/paticipant_nav_bottom.dart';
+import 'package:louisa_demo/demo_screens/demo_take_picture.dart';
 
 List<Choice> choices = [
   Choice.withParams('Chemical smell inside the home', 1),
@@ -314,7 +316,8 @@ class _DailyEnvironmentScreenState extends State<DailyEnvironmentScreen> {
                   ),
                   onPressed: () {
                     if (visibility) {
-                      Navigator.pushNamed(context, TakePictureScreen.id);
+                      //Navigator.pushNamed(context, TakePictureScreen.id);
+                      Navigator.pushNamed(context, DemoTakePictureScreen.id);
                     } else {
                       Navigator.popAndPushNamed(
                           context, PaticipantNavScreen.id);

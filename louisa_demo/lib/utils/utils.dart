@@ -2,8 +2,6 @@ import 'package:intl/intl.dart';
 
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong/latlong.dart';
-import 'package:louisa_demo/utils/constant.dart';
-import 'package:louisa_demo/models/utils.dart';
 
 bool isValidEmail(String email) {
   Pattern pattern =
@@ -65,21 +63,21 @@ Future<LatLng> getCurrentLocation() async {
 
   permission = await Geolocator.checkPermission();
   print('permission: ${permission}');
-  // if (permission == LocationPermission.deniedForever) {
-  //   await Geolocator.openLocationSettings();
-  //   // return Future.error(
-  //   //     'Location permissions are permantly denied, we cannot request permissions.');
-  // }
+  if (permission == LocationPermission.deniedForever) {
+    await Geolocator.openLocationSettings();
+    return Future.error(
+        'Location permissions are permantly denied, we cannot request permissions.');
+  }
 
-  // if (permission == LocationPermission.denied) {
-  //   permission = await Geolocator.requestPermission();
-  //   if (permission != LocationPermission.whileInUse &&
-  //       permission != LocationPermission.always) {
-  //     await Geolocator.openLocationSettings();
-  //     // return Future.error(
-  //     //     'Location permissions are denied (actual value: $permission).');
-  //   }
-  // }
+  if (permission == LocationPermission.denied) {
+    permission = await Geolocator.requestPermission();
+    if (permission != LocationPermission.whileInUse &&
+        permission != LocationPermission.always) {
+      await Geolocator.openLocationSettings();
+      return Future.error(
+          'Location permissions are denied (actual value: $permission).');
+    }
+  }
   Position coordinates = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
       forceAndroidLocationManager: true);
@@ -90,5 +88,3 @@ Future<LatLng> getCurrentLocation() async {
   // });
   return LatLng(coordinates.latitude, coordinates.longitude);
 }
-
-

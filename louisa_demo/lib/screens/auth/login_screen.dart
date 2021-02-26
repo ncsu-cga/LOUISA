@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'dart:async';
 import 'package:http/http.dart';
+import 'package:louisa_demo/screens/surveys/daily/survey_daily_health_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:louisa_dev1/constants.dart';
 //import 'package:louisa_dev1/screens/my_health_screen.dart';
@@ -46,7 +47,10 @@ class _LoginScreenState extends State<LoginScreen> {
     final double containerHeight = 90.0;
 
     return Scaffold(
-      appBar: appBarWithCloseDefault(context, 'LOUISA'),
+      appBar: AppBar(
+        title: Text('Log In'),
+        centerTitle: true,
+      ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 30.0),
         // height: size.height,
@@ -137,43 +141,46 @@ class _LoginScreenState extends State<LoginScreen> {
                   RoundedButton(
                     title: 'Log In',
                     color: kPrimaryColor,
-                    onPressed: () async {
-                      _form.currentState.validate();
-                      var response = await authenticateUser(context,
-                          _emailController.text, _passwordController.text);
-                      final SharedPreferences pref =
-                          await SharedPreferences.getInstance();
-
-                      setState(() {
-                        if (response.statusCode == 200) {
-                          _authError = false;
-                          print('SUCCESS');
-
-                          String consent = pref.getString(Const.CONSENT_FORM);
-                          String profile = pref.getString(Const.PROFILE);
-                          String onetimeSurvey =
-                              pref.getString(Const.ONETIME_SURVEY);
-
-                          print('Consent: ${consent}');
-                          print('Profile: ${profile}');
-                          print('One-time Survey: ${onetimeSurvey}');
-                          if (consent != Const.COMPLETE) {
-                            Navigator.popAndPushNamed(
-                                context, ConsentScreen.id);
-                          } else if (profile != Const.COMPLETE) {
-                            Navigator.popAndPushNamed(
-                                context, PaticipantInfoScreen.id);
-                          } else if (onetimeSurvey != Const.COMPLETE) {
-                            Navigator.popAndPushNamed(
-                                context, OneTimeHealthScreen.id);
-                          }
-                        } else {
-                          _authError = true;
-                        }
-                      });
-
-                      // print(_form.currentState.validate());
+                    onPressed: () {
+                      Navigator.popAndPushNamed(context, DailyHealthScreen.id);
                     },
+                    // onPressed: () async {
+                    // _form.currentState.validate();
+                    // var response = await authenticateUser(context,
+                    //     _emailController.text, _passwordController.text);
+                    // final SharedPreferences pref =
+                    //     await SharedPreferences.getInstance();
+
+                    // setState(() {
+                    //   if (response.statusCode == 200) {
+                    //     _authError = false;
+                    //     print('SUCCESS');
+
+                    //     String consent = pref.getString(Const.CONSENT_FORM);
+                    //     String profile = pref.getString(Const.PROFILE);
+                    //     String onetimeSurvey =
+                    //         pref.getString(Const.ONETIME_HEALTH_SURVEY);
+
+                    //     print('Consent: ${consent}');
+                    //     print('Profile: ${profile}');
+                    //     print('One-time Survey: ${onetimeSurvey}');
+                    //     if (consent != Const.COMPLETE) {
+                    //       Navigator.popAndPushNamed(
+                    //           context, ConsentScreen.id);
+                    //     } else if (profile != Const.COMPLETE) {
+                    //       Navigator.popAndPushNamed(
+                    //           context, PaticipantInfoScreen.id);
+                    //     } else if (onetimeSurvey != Const.COMPLETE) {
+                    //       Navigator.popAndPushNamed(
+                    //           context, OneTimeHealthScreen.id);
+                    //     }
+                    //   } else {
+                    //     _authError = true;
+                    //   }
+                    // });
+
+                    // print(_form.currentState.validate());
+                    // },
                   ),
                   SizedBox(height: 10),
                   InkWell(

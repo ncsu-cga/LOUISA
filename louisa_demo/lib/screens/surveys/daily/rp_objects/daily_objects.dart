@@ -2,6 +2,7 @@ import 'package:research_package/research_package.dart';
 
 import 'package:louisa_demo/models/dialog_step.dart';
 import 'package:louisa_demo/screens/home/paticipant_nav_bottom.dart';
+import 'package:louisa_demo/demo.dart';
 
 //----- Yes & No answers
 List<RPChoice> yesNo = [
@@ -18,7 +19,7 @@ RPBooleanAnswerFormat yesNoAnswerFormat =
 RPInstructionStep dailyHealthQuestionInstruction = RPInstructionStep(
   identifier: 'dailyHealthQuestionInstructionId',
   title: 'Daily Health Questions',
-)..text = 'Last, we would like to ask about how you are feeling today.';
+)..text = 'We would like to ask about how you are feeling today.';
 
 RPQuestionStep symptomsTodayQuestionStep = RPQuestionStep.withAnswerFormat(
     'symptomsTodayQuestionId',
@@ -107,7 +108,8 @@ RPNavigableOrderedTask navigableDailyHealthSurveyTask = RPNavigableOrderedTask(
   ],
   predicateSteps: dialogPredicateSteps,
   closeAfterFinished: false,
-  navigationPageId: PaticipantNavScreen.id,
+  navigationPageId: DemoHome.id,
+  //navigationPageId: PaticipantNavScreen.id,
 )
   ..setNavigationRuleForTriggerStepIdentifier(
       symptomsTodayBranchRule, symptomsTodayQuestionStep.identifier)

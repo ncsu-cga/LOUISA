@@ -35,7 +35,7 @@ dependencies:
   http: ^0.12.2
   shared_preferences: ^0.5.12+4
   auto_size_text: ^2.1.0
-  geolocator: ^6.1.14
+  geolocator: ^6.2.1
   flutter_map: any
   latlong: ^0.6.1
   flutter_local_notifications: ^4.0.1
@@ -67,6 +67,11 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/lang/en.json
+  # fonts:
+  # - family: AppIcons
+  #   fonts:
+  #     - asset: assets/fonts/health_and_safety.ttf
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
