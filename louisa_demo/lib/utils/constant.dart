@@ -3,7 +3,7 @@ class Const {
   static const String SESSION = '';
 
   // Survey
-  static const String CALL_911 = '911';
+  static const String CALL_911 = '';
   static const String DOCTOR_NAME = '';
   static const String DOCTOR_PHONE = '';
   static const String CONSENT_FORM = '';

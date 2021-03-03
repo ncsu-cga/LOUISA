@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:intl/intl.dart';
 import 'package:research_package/research_package.dart';
 import 'package:louisa_demo/screens/surveys/onetime/rp_objects/onetime_objects.dart';
-import 'package:louisa_demo/screens/home/paticipant_nav_bottom.dart';
 import 'package:louisa_demo/services/shared_preferences.dart';
 import 'package:louisa_demo/utils/constant.dart';
+import 'package:louisa_demo/demo.dart';
 
 class OneTimeHealthScreen extends StatelessWidget {
   static const id = 'one_time_health_screen';
@@ -25,7 +25,7 @@ class OneTimeHealthScreen extends StatelessWidget {
     // Do anything with the result at the moment of the cancellation
     //print('The result so far:\n' + _encode(result));
     setSharedPreference(Const.ONETIME_HEALTH_SURVEY, Const.INCOMPLETE);
-    Navigator.popAndPushNamed(context, PaticipantNavScreen.id);
+    result = null;
   }
 
   @override

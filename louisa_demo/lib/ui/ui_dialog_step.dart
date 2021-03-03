@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:research_package/research_package.dart';
-
 import 'package:louisa_demo/models/dialog_step.dart';
 import 'package:louisa_demo/ui/ui_dialog_widgets.dart';
 

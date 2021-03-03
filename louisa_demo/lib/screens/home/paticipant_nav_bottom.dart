@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-
-import 'package:louisa_demo/models/utils.dart';
-import 'package:louisa_demo/screens/help_screen.dart';
 import 'package:louisa_demo/widgets/ui_home_card_button.dart';
 // Screen
 import 'package:louisa_demo/screens/home/paticipant_home_screen.dart';
-import 'package:louisa_demo/screens/auth/login_screen.dart';
 import 'package:louisa_demo/screens/about.dart';
-import 'package:louisa_demo/demo.dart';
+
 
 class PaticipantNavScreen extends StatefulWidget {
   static const id = 'paticipant_nav_screen';
@@ -42,7 +38,7 @@ class _PaticipantNavScreenState extends State<PaticipantNavScreen> {
     return cardButtonItems;
   }
 
-  Widget _onItemTapped(int index) {
+  void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });

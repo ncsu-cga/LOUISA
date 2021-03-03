@@ -11,7 +11,6 @@ import 'package:louisa_demo/screens/home/paticipant_nav_bottom.dart';
 import 'package:louisa_demo/screens/surveys/consent/survey_consent_screen.dart';
 import 'package:louisa_demo/screens/surveys/onetime/survey_doctor_info_screen.dart';
 import 'package:louisa_demo/screens/surveys/onetime/survey_onetime_screen.dart';
-import 'package:louisa_demo/screens/surveys/onetime/survey_profile_screen.dart';
 import 'package:louisa_demo/screens/surveys/onetime/survey_profile_screen2.dart';
 import 'package:louisa_demo/screens/surveys/daily/survey_daily_environment_screen.dart';
 import 'package:louisa_demo/screens/surveys/daily/survey_daily_health_screen.dart';
@@ -56,7 +55,6 @@ class MyApp extends StatelessWidget {
         for (var supportedLocale in supportedLocales) {
           if (supportedLocale.languageCode == locale.languageCode
               /*  && supportedLocale.countryCode == locale.countryCode */
-              // TODO: Test on physical iPhone if Locale should use countryCode instead
               ) {
             return supportedLocale;
           }

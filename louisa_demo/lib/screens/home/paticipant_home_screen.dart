@@ -17,17 +17,6 @@ class _PaticipantHomeScreenState extends State<PaticipantHomeScreen> {
   bool consent = false;
   SharedPreferences _prefs;
   String demo;
-  // Create UI - card list buttons
-  // List<Widget> createCardListButtons(List<CardButton> items) {
-  //   List<Widget> cardButtonItems = [];
-  //   for (CardButton item in items) {
-  //     var newItem = CardButton(
-  //         title: item.title, leading: item.leading, onTap: item.onTap);
-  //     cardButtonItems.add(newItem);
-  //     cardButtonItems.add(Divider());
-  //   }
-  //   return cardButtonItems;
-  // }
 
   @override
   void initState() {
@@ -40,7 +29,6 @@ class _PaticipantHomeScreenState extends State<PaticipantHomeScreen> {
     setState(() {
       demo = _prefs.getString('DEMO');
     });
-    print(demo);
   }
 
   @override

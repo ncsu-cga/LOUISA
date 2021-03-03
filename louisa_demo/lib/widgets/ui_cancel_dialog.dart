@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:louisa_demo/services/shared_preferences.dart';
 import 'package:louisa_demo/utils/constant.dart';
-import 'package:louisa_demo/screens/home/paticipant_nav_bottom.dart';
 import 'package:louisa_demo/demo.dart';
 
 Future cancelConfirmDialog(BuildContext context,
@@ -25,7 +24,7 @@ Future cancelConfirmDialog(BuildContext context,
               Navigator.of(context).pop(YesNoAction.YES);
               // Navigator.pushNamed(context, PaticipantNavScreen.id);
               //Navigator.pushNamed(context, DemoHome.id);
-              Navigator.popUntil(context, (route) => false);
+              Navigator.popUntil(context, ModalRoute.withName(DemoHome.id));
             },
           ),
           TextButton(

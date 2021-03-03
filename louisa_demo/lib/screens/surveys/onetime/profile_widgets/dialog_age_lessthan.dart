@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:louisa_demo/screens/home/paticipant_nav_bottom.dart';
+import 'package:louisa_demo/demo.dart';
 
 Future ageYangerThan18Dialog(
     BuildContext context, String title, String content) async {
@@ -21,7 +21,7 @@ Future ageYangerThan18Dialog(
             child: const Text('CLOSE'),
             onPressed: () {
               //Navigator.of(context).pop(ConfirmAction.CANCEL);
-              Navigator.popAndPushNamed(context, PaticipantNavScreen.id);
+              Navigator.popAndPushNamed(context, DemoHome.id);
             },
           ),
         ],

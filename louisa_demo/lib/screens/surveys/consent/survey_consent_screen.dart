@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:research_package/research_package.dart';
-import 'dart:convert';
 import 'package:intl/intl.dart';
 import 'package:louisa_demo/services/http_services.dart';
 // Screen
@@ -17,8 +16,8 @@ class ConsentScreen extends StatefulWidget {
 }
 
 class _ConsentScreenState extends State<ConsentScreen> {
-  String _encode(Object object) =>
-      const JsonEncoder.withIndent(' ').convert(object);
+  // String _encode(Object object) =>
+  //     const JsonEncoder.withIndent(' ').convert(object);
 
   void resultCallback(RPTaskResult result, BuildContext context) {
     // Do anything with the result
@@ -29,7 +28,7 @@ class _ConsentScreenState extends State<ConsentScreen> {
       setSharedPreference(Const.CONSENT_FORM, Const.INCOMPLETE);
       Navigator.popAndPushNamed(context, PaticipantNavScreen.id);
     } else {
-      var resultJson = result.toJson();
+      // var resultJson = result.toJson();
       setSharedPreference(Const.CONSENT_FORM, Const.COMPLETE);
       final String dateTimeNow =
           DateFormat.yMEd().add_jms().format(DateTime.now());
@@ -44,7 +43,7 @@ class _ConsentScreenState extends State<ConsentScreen> {
     // Do anything with the result at the moment of the cancellation
     print("Cancelled");
     setSharedPreference(Const.CONSENT_FORM, Const.INCOMPLETE);
-    Navigator.of(context).pop();
+    //Navigator.of(context).pop();
     //Navigator.popUntil(context, ModalRoute.withName(NonPaticipantNavScreen.id));
   }
 

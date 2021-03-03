@@ -18,8 +18,9 @@ class DoctorInfoScreen extends StatefulWidget {
 
 class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
   YesNoAction _yesNo;
-  final _doctorFullName = TextEditingController();
-  final _doctorPhone = TextEditingController();
+
+  final _doctorFullName = TextEditingController(text: 'Doctor\'s name');
+  final _doctorPhone = TextEditingController(text: '3453456543');
   bool visibility = false;
 
   void _setDoctorInfo() async {
@@ -28,7 +29,8 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
     await prefs.setString(Const.DOCTOR_PHONE, _doctorPhone.text);
   }
 
-    void dispose() {
+  @override
+  void dispose() {
     _doctorFullName.dispose();
     _doctorPhone.dispose();
     super.dispose();
@@ -103,9 +105,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                         // This optional block of code can be used to run
                         // code when the user saves the form.
                       },
-                      validator: (String value) {
-                        return value.isEmpty ? 'First name is required' : null;
-                      },
+                      validator: null,
                     ),
                     SizedBox(height: 30.0),
                     QuestionText('What is your doctor’s office phone number?'),
@@ -125,11 +125,7 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                         // This optional block of code can be used to run
                         // code when the user saves the form.
                       },
-                      validator: (String value) {
-                        return value.isEmpty
-                            ? 'Phone number is required'
-                            : null;
-                      },
+                      validator: null,
                     ),
                   ],
                 ),
@@ -143,7 +139,14 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
                 color: kPrimaryColor,
                 onPressed: () {
                   _setDoctorInfo();
-                  Navigator.popAndPushNamed(context, OneTimeHealthScreen.id);
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => OneTimeHealthScreen()),
+                    ModalRoute.withName('/'),
+                  );
+                  // Navigator.popAndPushNamed(
+                  //     context, OneTimeHealthScreen.id);
                 },
               ),
             ],
@@ -152,6 +155,4 @@ class _DoctorInfoScreenState extends State<DoctorInfoScreen> {
       ),
     );
   }
-
-
 }

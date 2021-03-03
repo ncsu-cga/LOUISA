@@ -51,7 +51,6 @@ class _DemoHomeState extends State<DemoHome> {
       CardButton(
           title: 'Onetime Survey',
           onTap: () {
-            //_setFirstTimeInfo();
             _setFirstTimeInfo();
             Navigator.pushNamed(context, PaticipantNavScreen.id);
             // Navigator.pushNamed(context, PaticipantNavScreen.id);
@@ -79,7 +78,7 @@ class _DemoHomeState extends State<DemoHome> {
     ];
     return Scaffold(
       appBar: AppBar(
-        title: Text('Demo'),
+        title: Text('LOUISA Demo APP'),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 8.0),

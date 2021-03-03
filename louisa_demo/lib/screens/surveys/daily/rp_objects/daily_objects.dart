@@ -1,7 +1,7 @@
+import 'package:louisa_demo/screens/home/paticipant_nav_bottom.dart';
 import 'package:research_package/research_package.dart';
 
 import 'package:louisa_demo/models/dialog_step.dart';
-import 'package:louisa_demo/screens/home/paticipant_nav_bottom.dart';
 import 'package:louisa_demo/demo.dart';
 
 //----- Yes & No answers
@@ -86,14 +86,10 @@ Map<String, List<DialogStep>> dialogPredicateSteps = {
   'symptomsQuestionStepID': [dialog911Step, dialogDoctorStep]
 };
 
-RPInstructionStep endDailyHealthQuestionInstruction = RPInstructionStep(
-  identifier: 'dailyHealthQuestionInstructionId',
-  title: '2 of 2 completed',
-)..text = 'You have completed second portion of survey.';
-
-RPCompletionStep completionStep = RPCompletionStep("completionID")
-  ..title = "Finished"
-  ..text = "Thank you for filling out the survey!";
+RPCompletionStep completionStep = RPCompletionStep('completionID')
+  ..title = 'End of Daily Health Questions'
+  ..text =
+      'You have completed Daily Health Survey.\n Thank you for filling out the survey!';
 
 RPNavigableOrderedTask navigableDailyHealthSurveyTask = RPNavigableOrderedTask(
   'dailyHealthSurveyTaskID',
@@ -103,13 +99,11 @@ RPNavigableOrderedTask navigableDailyHealthSurveyTask = RPNavigableOrderedTask(
     symptomsQuestionStep,
     dialog911Step,
     dialogDoctorStep,
-    endDailyHealthQuestionInstruction,
     completionStep,
   ],
   predicateSteps: dialogPredicateSteps,
   closeAfterFinished: false,
   navigationPageId: DemoHome.id,
-  //navigationPageId: PaticipantNavScreen.id,
 )
   ..setNavigationRuleForTriggerStepIdentifier(
       symptomsTodayBranchRule, symptomsTodayQuestionStep.identifier)

@@ -15,8 +15,9 @@ RPBooleanAnswerFormat yesNoAnswerFormat =
 
 RPInstructionStep onetimeHealthQuestionInstruction = RPInstructionStep(
   identifier: 'onetimeHealthQuestionInstructionId',
-  title: 'One-time Health Questions',
-)..text = 'Last, we would like to ask about how you are feeling today.';
+  title: 'One-time Survey Questions',
+)..text =
+    'Welcome! You will be asked a number of questions about your health today. After today, the app will just check in to ask how you are feeling each day.';
 
 // ----- Gender Question -----
 
@@ -170,7 +171,7 @@ RPQuestionStep householdSmokingQuestionStep = RPQuestionStep.withAnswerFormat(
 //----- Health Question 1 <MultipleChoice> -----
 RPInstructionStep healthQuestionInstruction = RPInstructionStep(
   identifier: 'healthQuestionId',
-  title: 'Health Questions',
+  title: '',
 )..text =
     'Now, we would like to ask you a few questions about your health problems over the years.';
 
@@ -347,10 +348,15 @@ RPQuestionStep neuroQuestionStep = RPQuestionStep.withAnswerFormat(
 );
 
 //----- Every Day Survey -----
-RPInstructionStep endOneTimeHealthQuestionInstruction = RPInstructionStep(
-  identifier: 'endOneTimeHealthQuestionInstructionId',
-  title: 'End of Part I',
-)..text = 'You have completed first portion of the survey.';
+// RPInstructionStep endOneTimeHealthQuestionInstruction = RPInstructionStep(
+//   identifier: 'endOneTimeHealthQuestionInstructionId',
+//   title: 'End of Part I',
+// )..text = 'You have completed first portion of the survey.';
+
+RPCompletionStep endOneTimeHealthCompletion =
+    RPCompletionStep('endOneTimeHealthCompletionID')
+      ..title = 'End of One-time Survey Questions'
+      ..text = 'You have completed One-time Survey.';
 
 // ----- TASK -----
 // Predicate Step Navigation Rule
@@ -399,7 +405,7 @@ RPNavigableOrderedTask navigableSurveyTask = RPNavigableOrderedTask(
     heartQuestionStep,
     immuneQuestionStep,
     neuroQuestionStep,
-    endOneTimeHealthQuestionInstruction
+    endOneTimeHealthCompletion
   ],
   predicateSteps: healthPredicateSteps,
   closeAfterFinished: false,

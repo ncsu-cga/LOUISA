@@ -36,6 +36,7 @@ class Choice {
 
   @override
   String toString() {
+    // ignore: unnecessary_brace_in_string_interps
     return 'Choice: {text: ${_text}, value: ${_value}, isSelected: ${_isSelected}, isFreeText: ${_isFreeText}}';
   }
 }

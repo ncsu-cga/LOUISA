@@ -1,7 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
-
+import 'dart:io' show Platform;
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong/latlong.dart';
+import 'package:louisa_demo/widgets/ui_material_datepicker.dart';
+import 'package:louisa_demo/widgets/ui_cupertino_datepicker.dart';
 
 bool isValidEmail(String email) {
   Pattern pattern =
@@ -45,6 +49,14 @@ bool isValidPhoneNumber(String phone) {
   return true;
 }
 
+Widget getDatePicker(String title, TextEditingController day,
+    String initialDate, String minimumDate) {
+  if (Platform.isIOS) {
+    return IosDatePicker(title, day, initialDate, minimumDate);
+  }
+  return MaterialDatePicker(title, day, initialDate, minimumDate);
+}
+
 int calculateAge(String birthday) {
   DateTime today = DateTime.now();
   Duration difference = today.difference(DateFormat.yMd().parse(birthday));
@@ -62,7 +74,6 @@ Future<LatLng> getCurrentLocation() async {
   }
 
   permission = await Geolocator.checkPermission();
-  print('permission: ${permission}');
   if (permission == LocationPermission.deniedForever) {
     await Geolocator.openLocationSettings();
     return Future.error(
@@ -81,10 +92,5 @@ Future<LatLng> getCurrentLocation() async {
   Position coordinates = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
       forceAndroidLocationManager: true);
-
-  // _center = LatLng(coor.latitude, coor.longitude);
-  // setState(() {
-  //   _mapController.move(_center, 17.0);
-  // });
   return LatLng(coordinates.latitude, coordinates.longitude);
 }

@@ -1,8 +1,6 @@
 import 'package:louisa_demo/screens/surveys/onetime/survey_profile_screen2.dart';
 import 'package:research_package/model.dart';
 
-import 'package:louisa_demo/screens/surveys/onetime/survey_profile_screen.dart';
-
 RPConsentSection titleSection = RPConsentSection.withParams(
     RPConsentSectionType.Custom)
   ..title = 'COLFAX/LOUISIANA MOBILE PHONE APP CONSENT FORM '

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:louisa_demo/widgets/ui_rounded_button.dart';
 import 'package:louisa_demo/utils/style.dart';
-import 'package:louisa_demo/services/http_services.dart';
 import 'package:louisa_demo/utils/utils.dart';
-import 'package:louisa_demo/widgets/ui_appbar_widget.dart';
-import 'package:louisa_demo/utils/constant.dart';
 import 'package:louisa_demo/screens/surveys/consent/survey_consent_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -20,7 +17,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _pass = TextEditingController();
   final TextEditingController _confirmPass = TextEditingController();
-  bool _validate = false;
   Map response;
   String _passToolTip = '\u2022 Minimum 1 Upper case\n' +
       '\u2022 Minimum 1 Lower case\n' +
@@ -143,7 +139,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         title: 'Sign Up',
                         color: kPrimaryColor,
                         onPressed: () async {
-                          _validate = _form.currentState.validate();
+                          _form.currentState.validate();
                           // response = await createUser(
                           //     _email.text, _pass.text, context);
                           // setState(() {

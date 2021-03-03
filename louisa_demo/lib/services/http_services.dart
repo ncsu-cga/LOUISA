@@ -1,20 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
-import 'package:louisa_demo/screens/surveys/onetime/survey_onetime_screen.dart';
-import 'package:louisa_demo/screens/surveys/onetime/survey_profile_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:louisa_demo/screens/home/paticipant_nav_bottom.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:louisa_demo/screens/surveys/consent/survey_consent_screen.dart';
-import 'package:louisa_demo/utils/utils.dart';
 import 'package:louisa_demo/utils/constant.dart';
-
-//import 'package:louisa_dev1/screens/consent_screen.dart';
-//import 'package:louisa_dev1/screens/my_health_screen.dart';
-import 'package:research_package/research_package.dart';
-
 import 'package:louisa_demo/models/post.dart';
 
 class GetHttpResponse {

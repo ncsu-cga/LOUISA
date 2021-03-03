@@ -6,7 +6,6 @@ import 'package:research_package/research_package.dart';
 
 import 'package:louisa_demo/utils/style.dart';
 import 'package:louisa_demo/utils/constant.dart';
-import 'package:louisa_demo/screens/home/paticipant_nav_bottom.dart';
 
 void launchUrl(String url) async {
   if (await canLaunch(url)) {
@@ -62,8 +61,9 @@ Widget callDoctorDialog(BuildContext context) {
         switch (snapshot.connectionState) {
           case ConnectionState.done:
             String dialogMessage =
-                'A medical consultation may be advisable. Would you like ' +
-                    'to call ${snapshot.data.getString(Const.DOCTOR_NAME)}?';
+                'A medical consultation may be advisable. Would you like to call XXXX?';
+            // 'A medical consultation may be advisable. Would you like ' +
+            //     'to call ${snapshot.data.getString(Const.DOCTOR_NAME)}?';
             return AlertDialog(
               title: Text(
                 'Call Doctor?',
@@ -102,4 +102,3 @@ Widget callDoctorDialog(BuildContext context) {
         }
       });
 }
-

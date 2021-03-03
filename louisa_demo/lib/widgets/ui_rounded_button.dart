@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:louisa_demo/utils/style.dart';
 
 class RoundedButton extends StatelessWidget {
   RoundedButton({this.title, this.color, @required this.onPressed});
@@ -14,13 +15,17 @@ class RoundedButton extends StatelessWidget {
       width: size.width * 0.5,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8),
-        child: FlatButton(
-          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 40),
-          color: color,
-          onPressed: onPressed,
-          child: Text(
-            title,
-            style: TextStyle(color: Colors.white, fontSize: 18),
+        child: Container(
+          height: 40.0,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: kPrimaryColor,
+            ),
+            onPressed: onPressed,
+            child: Text(
+              title,
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
           ),
         ),
       ),

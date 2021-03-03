@@ -25,11 +25,14 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
   final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
       GlobalKey<ScaffoldMessengerState>();
   CameraController controller;
+  // ignore: unused_field
   Future<void> _initializeControllerFuture;
   bool isCameraReady = false;
   bool showCapturedPhoto = false;
   bool enableAudio = true;
+  // ignore: unused_field
   double _minAvailableExposureOffset = 0.0;
+  // ignore: unused_field
   double _maxAvailableExposureOffset = 0.0;
   double _minAvailableZoom;
   double _maxAvailableZoom;
@@ -69,8 +72,9 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
   }
 
   @override
+  // ignore: override_on_non_overriding_member // TODO: Add this for Android
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    // App state changed before we got the chance to initialize.
+  // App state changed before we got the chance to initialize.
     if (controller == null || !controller.value.isInitialized) {
       return;
     }
@@ -121,6 +125,7 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
     try {
       await controller.initialize();
     } on CameraException catch (e) {
+      // ignore: unnecessary_brace_in_string_interps
       showInSnackBar('Camera error ${e}');
     }
 

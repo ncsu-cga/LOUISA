@@ -1,28 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:louisa_demo/widgets/ui_appbar_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:louisa_demo/screens/home/paticipant_nav_bottom.dart';
 import 'package:louisa_demo/utils/constant.dart';
+import 'package:louisa_demo/demo.dart';
+import 'package:louisa_demo/utils/style.dart';
 
 class DemoSendPictureScreen extends StatelessWidget {
   static const id = 'demo_send_picture_screen';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarWithCloseDefault(context, 'Daily Environment Survey'),
+      appBar: AppBar(title: Text('Daily Environment Survey')),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // Container(
-          //   padding: EdgeInsets.all(8.0),
-          //   child: Text(
-          //     'If you would like to include a picture, it cannot be transmitted to LDEQ but can provide evidence for citizen records.',
-          //     style: TextStyle(
-          //       fontSize: 20.0,
-          //       fontWeight: FontWeight.w500,
-          //     ),
-          //   ),
-          // ),
           Expanded(
             child: Container(
               padding: const EdgeInsets.all(1.0),
@@ -30,11 +20,11 @@ class DemoSendPictureScreen extends StatelessWidget {
                 child: Icon(Icons.image, size: 80.0),
               ),
               decoration: BoxDecoration(
-                color: Colors.black,
-                // border: Border.all(
-                //   color: controller != null ? Colors.redAccent : Colors.grey,
-                //   width: 3.0,
-                // ),
+                //color: Colors.black,
+                border: Border.all(
+                  color: Colors.grey,
+                  width: 3.0,
+                ),
               ),
             ),
           ),
@@ -46,14 +36,16 @@ class DemoSendPictureScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
             children: [
-              IconButton(
-                icon: const Icon(Icons.send_rounded, size: 46.0),
-                color: Colors.blue,
-                onPressed: () {
-                  imageSentDialog(context);
-                  //Navigator.popAndPushNamed(context, );
-                  //onTakePictureButtonPressed(context);
-                },
+              Container(
+                height: 80.0,
+                child: IconButton(
+                  padding: EdgeInsets.all(0),
+                  icon: const Icon(Icons.send_sharp, size: 40.0),
+                  color: kPrimaryLightColor,
+                  onPressed: () {
+                    imageSentDialog(context);
+                  },
+                ),
               ),
             ],
           ),
@@ -77,7 +69,9 @@ Future imageSentDialog(BuildContext context) async {
           TextButton(
             child: const Text('Finish'),
             onPressed: () {
-              Navigator.popAndPushNamed(context, PaticipantNavScreen.id);
+              //Navigator.pop(context);
+              Navigator.popUntil(context, ModalRoute.withName(DemoHome.id));
+              //Navigator.popAndPushNamed(context, DemoHome.id);
             },
           ),
           TextButton(
